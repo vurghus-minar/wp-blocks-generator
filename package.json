@@ -1,0 +1,32 @@
+{
+  "name": "wp-blocks-generator",
+  "version": "1.0.0",
+  "description": "Wordpress block plugin boilerplate generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "wp-block-gen": "./bin/wp-block-gen.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vurghus-minar/wp-blocks-generator.git"
+  },
+  "keywords": [
+    "Wordpress",
+    "Gutenberg",
+    "blocks",
+    "plugin",
+    "generator"
+  ],
+  "author": "Vurghus Minar <vurghus.minar@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vurghus-minar/wp-blocks-generator/issues"
+  },
+  "homepage": "https://github.com/vurghus-minar/wp-blocks-generator#readme",
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}
