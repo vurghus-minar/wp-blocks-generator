@@ -8,11 +8,11 @@ Project generator for [WP Block Boilerplate](https://github.com/vurghus-minar/wp
 
 ## Getting started
 
-Create a ```wp-block-plugin.json``` file in your development folder.
+Create a ```wp-block-plugin.config.json``` file in your development folder.
 
 Run ```wp-block-gen your-block-plugin-name```
 
-Sample ```wp-block-plugin.json```
+Sample ```wp-block-plugin.config.json```
 
 ```json
 {
