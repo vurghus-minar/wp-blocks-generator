@@ -4,17 +4,17 @@ Project generator for [WP Block Boilerplate](https://github.com/vurghus-minar/wp
 
 ## Installation
 
-```shell npm install global wp-blocks-generator```
+```npm install global wp-blocks-generator```
 
 ## Getting started
 
 Create a ```wp-block-plugin.json``` file in your development folder.
 
-Run ```shell wp-block-gen your-block-plugin-name```
+Run ```wp-block-gen your-block-plugin-name```
 
 Sample ```wp-block-plugin.json```
 
-```js
+```json
 {
     "plugin": {
         "name": "First block plugin",

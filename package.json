@@ -1,6 +1,6 @@
 {
   "name": "wp-blocks-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wordpress block plugin boilerplate generator",
   "main": "index.js",
   "scripts": {
