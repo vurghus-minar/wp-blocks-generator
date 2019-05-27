@@ -4,7 +4,7 @@ Project generator for [WP Block Boilerplate](https://github.com/vurghus-minar/wp
 
 ## Installation
 
-```npm install global wp-blocks-generator```
+```npm install --global wp-blocks-generator```
 
 ## Getting started
 
