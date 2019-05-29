@@ -29,7 +29,7 @@ const webpackConfig = {
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist/wp-block-plugin'),
+		path: path.resolve(__dirname, 'dist/%%package_json.name%%'),
 	},
 	optimization: {
 		splitChunks: {
@@ -80,7 +80,7 @@ const webpackConfig = {
 		// clean build dir before every build
 		new CleanWebpackPlugin({
 			// after each build clean ghost stylesheet file 
-			cleanAfterEveryBuildPatterns: [path.resolve(__dirname,'dist/wp-block-plugin/script.css')]
+			cleanAfterEveryBuildPatterns: [path.resolve(__dirname,'dist/%%package_json.name%%/script.css')]
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
@@ -89,8 +89,8 @@ const webpackConfig = {
 		// https://github.com/webpack-contrib/mini-css-extract-plugin/issues/151
 		new FixStyleOnlyEntriesPlugin(),
 		new CopyPlugin([
-			{ from: path.resolve(__dirname, 'index.php'), to: path.resolve(__dirname,'dist/wp-block-plugin') },
-			{ from: path.resolve(__dirname, 'partials/*'), to: path.resolve(__dirname,'dist/wp-block-plugin') }
+			{ from: path.resolve(__dirname, 'index.php'), to: path.resolve(__dirname,'dist/%%package_json.name%%') },
+			{ from: path.resolve(__dirname, 'partials/*'), to: path.resolve(__dirname,'dist/%%package_json.name%%') }
 		]),
 	],
 };

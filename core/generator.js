@@ -38,50 +38,34 @@ module.exports = {
               } else {
                 const config = JSON.parse(rawConfig);
 
-                fs.readFile(`./${resource}/index.php`, function(err, file) {
-                  if (err) {
-                    process.stdout.write(`Error reading ${resource}/index.php \n`);
-                    console.error(err);
-                  } else {
-                    let result = file.toString();
-                    Object.keys(config).forEach(level1 => {
-                      Object.keys(config[level1]).forEach(level2 => {
-                        console.log(`${level1}.${level2}`, ':', config[level1][level2]);
-                        const regExp = new RegExp(`%%${level1}.${level2}%%`, 'g');
-                        result = result.replace(regExp, config[level1][level2]);
-                      });
-                    });
-
-                    fs.writeFile(`./${resource}/index.php`, result, function(err) {
-                      if (err) {
-                        console.error(err);
-                      } else {
-                        fs.readFile(`./${resource}/package.json`, function(err, file) {
-                          if (err) {
-                            process.stdout.write(`Error reading ${resource}/package.json \n`);
-                            console.error(err);
-                          } else {
-                            let result = file.toString();
-                            Object.keys(config).forEach(level1 => {
-                              Object.keys(config[level1]).forEach(level2 => {
-                                console.log(`${level1}.${level2}`, ':', config[level1][level2]);
-                                const regExp = new RegExp(`%%${level1}.${level2}%%`, 'g');
-                                result = result.replace(regExp, config[level1][level2]);
-                              });
-                            });
-
-                            fs.writeFile(`./${resource}/package.json`, result, function(err) {
-                              if (err) {
-                                console.error(err);
-                              } else {
-                                process.stdout.write(`${resource} created successfully!`);
-                              }
-                            });
-                          }
+                let templateFilesProcessed = 0;
+                ['index.php', 'package.json', 'webpack.config.js'].forEach((templateFile, index, array) => {
+                  fs.readFile(`./${resource}/${templateFile}`, function(err, file) {
+                    if (err) {
+                      process.stdout.write(`Error reading ${resource}/${templateFile} \n`);
+                      console.error(err);
+                    } else {
+                      let result = file.toString();
+                      Object.keys(config).forEach(level1 => {
+                        Object.keys(config[level1]).forEach(level2 => {
+                          const regExp = new RegExp(`%%${level1}.${level2}%%`, 'g');
+                          result = result.replace(regExp, config[level1][level2]);
                         });
-                      }
-                    });
-                  }
+                      });
+
+                      fs.writeFile(`./${resource}/${templateFile}`, result, function(err) {
+                        if (err) {
+                          console.error(err);
+                        } else {
+                          process.stdout.write(`${resource}/${templateFile} created successfully!\n`);
+                          templateFilesProcessed++;
+                          if (templateFilesProcessed === array.length) {
+                            process.stdout.write(`${resource} created successfully!\n`);
+                          }
+                        }
+                      });
+                    }
+                  });
                 });
               }
             });
